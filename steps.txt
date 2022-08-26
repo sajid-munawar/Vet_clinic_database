@@ -1,0 +1,64 @@
+I am using ubutnu so this is a bit different from windows so I am writing this for my own remembrance.
+
+sudo -i -u postgres
+psql
+postgres=# createdb vet_clinic
+postgres-# \c vet_clinic
+
+
+
+
+
+CREATE TABLE ANIMALS (
+ID INT,
+NAME VARCHAR,
+DATE_OF_BIRTH DATE,
+ESCAPE_ATTEMPTS INT,
+NEUTERED BOOLEAN,
+WEIGHT_KG DECIMAL
+);
+
+
+
+INSERT INTO ANIMALS VALUES(1,'Agumon','Feb 03, 2020',0,true,10.23);
+ 
+INSERT INTO ANIMALS VALUES(2,'Gabumon','Nov 15, 2018',2,true,8);
+ 
+INSERT INTO ANIMALS VALUES(3,'Pikachu','Jan 07, 2021',1,false,15.04);
+ 
+INSERT INTO ANIMALS VALUES(4,'Devimon','May 12, 2017',5,true,11);
+ 
+ 
+
+
+SELECT *
+FROM ANIMALS
+WHERE NAME LIKE '%mon';
+
+SELECT NAME
+FROM ANIMALS
+WHERE DATE_OF_BIRTH BETWEEN '2016-01-01' AND '2019-12-31';
+
+    SELECT NAME
+    FROM ANIMALS
+    WHERE NEUTERED = true AND ESCAPE_ATTEMPTS < 3;
+
+SELECT NAME, DATE_OF_BIRTH
+FROM ANIMALS
+WHERE NAME IN ('Agumon','Pikachu');
+
+SELECT NAME, ESCAPE_ATTEMPTS
+FROM ANIMALS
+WHERE WEIGHT_KG > 10.5;
+
+SELECT *
+FROM ANIMALS
+WHERE NEUTERED = TRUE;
+
+SELECT *
+FROM ANIMALS
+WHERE NOT NAME = 'Gabumon';
+
+SELECT *
+FROM ANIMALS
+WHERE WEIGHT_KG >= 10.4 AND WEIGHT_KG <= 17.3;
