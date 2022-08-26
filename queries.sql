@@ -32,3 +32,28 @@ WHERE NOT NAME = 'Gabumon';
 SELECT *
 FROM ANIMALS
 WHERE WEIGHT_KG >= 10.4 AND WEIGHT_KG <= 17.3;
+
+-- Display how many animals are there
+select count(*) from animals;
+
+-- Display how many animals that have never tried to escape
+select count(escape_attempts) from animals
+where escape_attempts = 0;
+
+-- Display the average weight of animals
+select avg(weight_kg) from animals;
+
+-- Display who escapes the most, neutered or not neutered animals
+select max(escape_attempts) from animals;
+
+select name from animals
+where escape_attempts = 7;
+
+-- Display the minimum weight of each type of animal
+select species, min(weight_kg), max(weight_kg) from animals
+group by species;
+
+-- Display the average number of escape attempts per animal type of those born between 1990 and 2000
+select species, avg(escape_attempts) from animals
+where date_of_birth between '1990-01-01' and '2000-12-31'
+group by species; 
