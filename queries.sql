@@ -64,3 +64,12 @@ group by species;
 select species, avg(escape_attempts) from animals
 where date_of_birth between '1990-01-01' and '2000-12-31'
 group by species;
+
+
+update animals
+set species = 'digimon'
+where name like '%mon';
+
+update animals
+set species = 'pokemon'
+where not species = 'digimon';
