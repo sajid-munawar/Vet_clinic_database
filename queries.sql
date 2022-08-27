@@ -93,3 +93,27 @@ where name like '%mon';
 update ANIMALS
 set species = 'pokemon'
 where not species = 'digimon';
+
+
+-- JOIN queries one to many ralationship
+
+-- What animals belong to Melody Pond?
+SELECT name,full_name FROM animals JOIN owners ON owners_id= owners.id AND owners.full_name='Melody Pond';
+
+-- List of all animals that are pokemon (their type is Pokemon).
+SELECT animals.name AS Pokemon FROM animals JOIN species ON species_id=species.id AND name='Pokemon';
+
+-- List all owners and their animals, remember to include those that don't own any animal.
+SELECT name, full_name FROM animals FULL OUTER JOIN owners owner_id=owners.id;
+
+-- How many animals are there per species?
+SELECT species.name AS species FROM species JOIN animals ON species.id = species_id GROUP BY species;
+
+-- List all Digimon owned by Jennifer Orwell.
+SELECT owners.full_name AS owners, animals.name AS animals FROM owners INNER JOIN species ON owners.full_name= 'Jenifer Orwell' AND species.name =' Digimon'INNER  JOIN animals ON owners.id= owners_id AND species.id= species_id;
+
+-- List all animals owned by Dean Winchester that haven't tried to escape.
+SELECT owners.full_name as Owners,animals.name as Animals FROM owners JOIN  animals ON   Owners.id = owner_id AND owners.full_name = 'Dean Winchester' AND animals.escape_attempts = 0;
+
+-- Who owns the most animals?
+SELECT owners.full_name AS Owners,count(*) FROM owners JOIN  animals ON  owners.id = owner_id GROUP BY Owners ORDER BY count DESC LIMIT 1; 
