@@ -14,12 +14,12 @@ CREATE TABLE ANIMALS (
 );
 
 CREATE TABLE owners (
-    id int SERIAL PRIMARY KEY NOT NULL,
+    id SERIAL PRIMARY KEY NOT NULL,
     full_name varchar(100) NOT NULL,
     age int NOT NULL
 );
 
 CREATE TABLE species(
-    id int SERIAL PRIMARY KEY NOT NULL,
+    id SERIAL PRIMARY KEY NOT NULL,
     name varchar(100) NOT NULL
-)
+);

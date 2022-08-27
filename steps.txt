@@ -6,9 +6,6 @@ postgres=# createdb vet_clinic
 postgres-# \c vet_clinic
 
 
-
-
-
 CREATE TABLE ANIMALS (
 ID INT,
 NAME VARCHAR,
@@ -62,3 +59,5 @@ WHERE NOT NAME = 'Gabumon';
 SELECT *
 FROM ANIMALS
 WHERE WEIGHT_KG >= 10.4 AND WEIGHT_KG <= 17.3;
+
+ALTER TABLE animals ADD CONSTRAINT FK_owners FOREIGN KEY (owners_id) REFERENCES owners(id);
