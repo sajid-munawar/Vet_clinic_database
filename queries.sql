@@ -65,6 +65,22 @@ select species, avg(escape_attempts) from animals
 where date_of_birth between '1990-01-01' and '2000-12-31'
 group by species;
 
+DELETE * FROM animals;
+BEGIN;
+DELETE FROM animals WHERE name='Bolossom';
+COMMIT;
+
+DELETE FROM animals WHERE weight_kg=11;
+ROLLBACK;
+
+SAVEPOINT save_point1;
+DELETE FROM animals WHERE name='Agumon';
+ROLLBACK to save_point1;
+
+SELECT * FROM animals;
+
+UPDATE animals 
+set species='unspecified';
 
 update animals
 set species = 'digimon'
