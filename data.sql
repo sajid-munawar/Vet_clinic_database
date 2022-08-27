@@ -8,8 +8,8 @@ INSERT INTO ANIMALS VALUES(3,'Pikachu','Jan 07, 2021',1,false,15.04);
 
 INSERT INTO ANIMALS VALUES(4,'Devimon','May 12, 2017',5,true,11);
 
-INSERT INTO ANIMALS VALUES 
-(5,'Charmander', 'feb 08,2020',0,false,11),
+INSERT INTO ANIMALS (Id, Name, Date_of_birth, Escape_attempts, Neutered, Weight_kg)
+VALUES (5,'Charmander', 'feb 08,2020',0,false,11),
 (6, 'Plantmon', 'nov 15,2021',2,true,5.7),
 (7,'Squirtle', 'apr 02, 1993',3, false,12.13),
 (8, 'Angemon', 'jul 07, 2005',1, true, 45),
@@ -20,3 +20,36 @@ INSERT INTO ANIMALS VALUES
 UPDATE ANIMALS
 SET DATE_OF_BIRTH = 'JUN 12, 2005'
 WHERE ID = 8;
+
+/* Owner's table data */
+INSERT INTO owners (full_name, age)
+VALUES
+('Sam Smith', 34),
+('Jennifer Orwell', 19),
+('Bob', 45),
+('Melody Pond', 77),
+('Dean Winchester', 14),
+('Jodie Whittaker', 38);
+
+/* Species's table data */
+INSERT INTO species (name)
+VALUES
+('Pokemon'),
+('Digimon');
+
+-- Modify your inserted animals so it includes the species_id value:
+-- If the name ends in "mon" it will be Digimon
+-- All other animals are Pokemon
+
+
+UPDATE animals SET species_id = 2 WHERE name LIKE '%mon';
+UPDATE animals SET species_id =1 WHERE species_id IS NULL;
+
+/* Update the owner_id in animals */
+UPDATE animals SET owners_id= 1 WHERE name='Agumon';
+UPDATE animals SET owners_id = 1 WHERE name = 'Agumon';
+UPDATE animals SET owners_id = 2 WHERE name IN( 'Gabumon', 'Pikachu');
+UPDATE animals SET owners_id = 3 WHERE name IN( 'Devimon', 'Plantmon');
+UPDATE animals SET owners_id = 4 WHERE name IN( 'Charmander', 'Squirtle', 'Blossom');
+UPDATE animals SET owners_id = 5 WHERE name IN( 'Angemon', 'Boarmon');
+
