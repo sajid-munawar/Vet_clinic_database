@@ -79,6 +79,10 @@ ROLLBACK to save_point1;
 
 SELECT * FROM animals;
 
+UPDATE animals SET weight_kg= weight_kg * -1;
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg<0;
+COMMIT;
+
 UPDATE animals 
 set species='unspecified';
 
